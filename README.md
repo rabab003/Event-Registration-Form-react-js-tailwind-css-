@@ -1,12 +1,39 @@
-# React + Vite
+# Event Registration Form
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A clean and modern booking form built with **React** and **Tailwind CSS**. This form captures user data like name, email, phone number, type of tech event, gender, and available dates. It includes custom styling, dark mode elements, and interactive inputs.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+| Desktop View | Mobile View |
+|--------------|-------------|
+| ![Desktop Screenshot](./src/assets/1%20(2).png) | ![Mobile Screenshot](./src/assets/1%20(1).png) |
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+## 🚀 Features
+
+- Fully responsive layout
+- Dark-themed inputs
+- Selectable event types & available dates
+- Gender radio buttons
+- Form validation (coming soon)
+- Smooth transitions and interactive UI
+
+
+---
+
+## 🛠️ Tech Stack
+
+- React.js
+- Tailwind CSS
+
+---
+
+## 💡 Coming Soon
+
+- Form validation
+
+- Submission success modal
+
+- Backend integration
+
