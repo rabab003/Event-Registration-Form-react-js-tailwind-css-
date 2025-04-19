@@ -19,11 +19,14 @@ export default function LeftSide() {
   const disabledBtn = dataForm.firstName == "" || dataForm.lastName == "" || dataForm.availableDate == "" || dataForm.email == "" || dataForm.gender == "" || dataForm.phoneNumber == "" || dataForm.typeEvent == ""  
 
   function subShow(eve){
+    console.log(dataForm)
     eve.preventDefault();
     setErrorMsg(null)
     const { phoneNumber} = dataForm;
-    if(phoneNumber.length < 12 || phoneNumber.length > 14){
+    if(phoneNumber.length < 7 || phoneNumber.length > 15){
       setErrorMsg ("phone Number is not correct")
+    }else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(dataForm.email)){
+      setErrorMsg("Please enter a valid email address");
     }
     setShowModal(true)
 
@@ -38,7 +41,7 @@ export default function LeftSide() {
   
   return (
     <div onClick={hideModalComp} className='w-full md:w-[50%] h-full px-6 py-12'>
-      <form className='space-y-6 w-full' action="" onSubmit={(e)=>{e.preventDefault(); console.log(dataForm)}}>
+      <form className='space-y-6 w-full' action="" onSubmit={subShow}>
         <div className='flex flex-col md:flex-row gap-4'>
           <div className='flex flex-col w-full'>
             <label className='mb-1'>First Name :</label>
@@ -122,7 +125,6 @@ export default function LeftSide() {
         </div>
 
         <button 
-          onClick={subShow}
           disabled={disabledBtn}
           type="submit" 
           className={`w-full cursor-pointer rounded-md py-2 mt-6 transition ${disabledBtn ? 'bg-[#2f2f2f]' :"bg-[#4B3EBE] hover:bg-[#4b3ebead]"}`}

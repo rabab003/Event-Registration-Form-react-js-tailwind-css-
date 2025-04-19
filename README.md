@@ -17,22 +17,23 @@ A clean and modern booking form built with **React** and **Tailwind CSS**. This 
 - Gender radio buttons
 - Form validation (coming soon)
 - Smooth transitions and interactive UI
+- Success modal with confirmation
+- Error modal with specific messages
+- Disabled submit button until valid
+- Required field checks
+- Real-time error highlighting
 
 
 ---
 
-## 🛠️ Tech Stack
-
-- React.js
+## 🛠️ Current Tech Stack
+- React.js (Hooks)
 - Tailwind CSS
+- Responsive Design
 
 ---
 
 ## 💡 Coming Soon
 
-- Form validation
-
-- Submission success modal
-
 - Backend integration
-
+- Multi-step form
