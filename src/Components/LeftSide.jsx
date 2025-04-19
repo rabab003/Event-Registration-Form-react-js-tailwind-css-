@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Modal from './Modal';
 
 export default function LeftSide() {
 
@@ -11,11 +12,33 @@ export default function LeftSide() {
     gender:'',
     availableDate:'',
   });
+  const [showModal, setShowModal] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(null)
+  
 
+  const disabledBtn = dataForm.firstName == "" || dataForm.lastName == "" || dataForm.availableDate == "" || dataForm.email == "" || dataForm.gender == "" || dataForm.phoneNumber == "" || dataForm.typeEvent == ""  
+
+  function subShow(eve){
+    eve.preventDefault();
+    setErrorMsg(null)
+    const { phoneNumber} = dataForm;
+    if(phoneNumber.length < 12 || phoneNumber.length > 14){
+      setErrorMsg ("phone Number is not correct")
+    }
+    setShowModal(true)
+
+  }
+
+  function hideModalComp(){
+    if(showModal){
+      setShowModal(false)
+    }
+
+  }
+  
   return (
-    <div className='w-full md:w-[50%] h-full px-6 py-10'>
+    <div onClick={hideModalComp} className='w-full md:w-[50%] h-full px-6 py-12'>
       <form className='space-y-6 w-full' action="" onSubmit={(e)=>{e.preventDefault(); console.log(dataForm)}}>
-
         <div className='flex flex-col md:flex-row gap-4'>
           <div className='flex flex-col w-full'>
             <label className='mb-1'>First Name :</label>
@@ -24,7 +47,7 @@ export default function LeftSide() {
               onChange={(eve)=>setDataForm({...dataForm,firstName:eve.target.value})}
               type="text" 
               placeholder='write your first name' 
-              className='bg-transparent border border-[#171717] rounded-md px-3 py-2 focus:outline-none focus:border-[#4B3EBE] transition' 
+              className='bg-transparent placeholder:text-[13px] border border-[#171717] rounded-md px-3 py-2 focus:outline-none focus:border-[#4B3EBE] transition' 
             />
           </div>
           <div className='flex flex-col w-full'>
@@ -34,7 +57,7 @@ export default function LeftSide() {
             onChange={(eve)=>setDataForm({...dataForm,lastName:eve.target.value})}
               type="text" 
               placeholder='write your last name' 
-              className='bg-transparent border border-[#171717] rounded-md px-3 py-2 focus:outline-none focus:border-[#4B3EBE] transition' 
+              className='placeholder:text-[13px]  bg-transparent border border-[#171717] rounded-md px-3 py-2 focus:outline-none focus:border-[#4B3EBE] transition' 
             />
           </div>
         </div>
@@ -46,7 +69,7 @@ export default function LeftSide() {
             onChange={(eve)=> setDataForm({...dataForm, email:eve.target.value})}
             type="email" 
             placeholder='write your email address' 
-            className='bg-transparent border border-[#171717] rounded-md px-3 py-2 focus:outline-none focus:border-[#4B3EBE] transition'
+            className='placeholder:text-[13px]  bg-transparent border border-[#171717] rounded-md px-3 py-2 focus:outline-none focus:border-[#4B3EBE] transition'
           />
         </div>
 
@@ -57,7 +80,7 @@ export default function LeftSide() {
              onChange={(eve=> setDataForm({...dataForm,phoneNumber:eve.target.value}))}
             type="text" 
             placeholder='your phone number' 
-            className='bg-transparent border border-[#171717] rounded-md px-3 py-2 focus:outline-none focus:border-[#4B3EBE] transition'
+            className='placeholder:text-[13px]  bg-transparent border border-[#171717] rounded-md px-3 py-2 focus:outline-none focus:border-[#4B3EBE] transition'
           />
         </div>
 
@@ -66,8 +89,9 @@ export default function LeftSide() {
           <select className='bg-transparent border border-[#171717] rounded-md px-3 py-2 text-white focus:outline-none focus:border-[#4B3EBE]' 
           value={dataForm.typeEvent}
           onChange={(eve)=> setDataForm({...dataForm, typeEvent:eve.target.value})}>
-            <option className='bg-black' value="AI&Machine-Learning">AI for Beginners Workshop</option>
-            <option className='bg-black' value="Developer&Programming-Events">Backend API Development Session</option>
+            <option className='bg-black text-[13px] ' value="" disabled >Select event type</option>
+            <option className='bg-black text-[13px] ' value="AI&Machine-Learning">AI for Beginners Workshop</option>
+            <option className='bg-black text-[13px] ' value="Developer&Programming-Events">Backend API Development Session</option>
           </select>
         </div>
 
@@ -90,18 +114,23 @@ export default function LeftSide() {
           <select value={dataForm.availableDate} onChange={(eve)=>{
             setDataForm({...dataForm, availableDate:eve.target.value})
           }} className='bg-transparent border border-[#171717] rounded-md px-3 py-2 text-white focus:outline-none focus:border-[#4B3EBE]'>
-            <option className='bg-[#171717]' value="25 Dec 2030 (10 AM , 5 PM)">25 Dec 2030 (10 AM , 5 PM)</option>
-            <option className='bg-[#171717]' value="26 Dec 2030 (10:30 AM , 5:30 PM)">26 Dec 2030 (10:30 AM , 5:30 PM)</option>
-            <option className='bg-[#171717]' value="27 Dec 2030 (11 AM , 6 PM)">27 Dec 2030 (11 AM , 6 PM)</option>
+            <option className='bg-[#171717] text-[13px]' value="" disabled>Select available date</option>
+            <option className='bg-[#171717] text-[13px]' value="25 Dec 2030 (10 AM , 5 PM)">25 Dec 2030 (10 AM , 5 PM)</option>
+            <option className='bg-[#171717] text-[13px]' value="26 Dec 2030 (10:30 AM , 5:30 PM)">26 Dec 2030 (10:30 AM , 5:30 PM)</option>
+            <option className='bg-[#171717] text-[13px]' value="27 Dec 2030 (11 AM , 6 PM)">27 Dec 2030 (11 AM , 6 PM)</option>
           </select>
         </div>
 
         <button 
+          onClick={subShow}
+          disabled={disabledBtn}
           type="submit" 
-          className='w-full cursor-pointer rounded-md py-2 mt-6 bg-[#4B3EBE] hover:bg-[#3a31a9] transition'>
+          className={`w-full cursor-pointer rounded-md py-2 mt-6 transition ${disabledBtn ? 'bg-[#2f2f2f]' :"bg-[#4B3EBE] hover:bg-[#4b3ebead]"}`}
+          >
           Submit
         </button>
       </form>
+      <Modal error={errorMsg} isVisible={showModal}/>
     </div>
   )
 }
