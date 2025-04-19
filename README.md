@@ -5,7 +5,8 @@ A clean and modern booking form built with **React** and **Tailwind CSS**. This 
 
 | Desktop View | Mobile View |
 |--------------|-------------|
-| ![Desktop Screenshot](./src/assets/1%20(2).png) | ![Mobile Screenshot](./src/assets/1%20(1).png) |
+| ![Desktop Screenshot](./src/assets/desk%201.png) | ![tab Screenshot](./src/assets/tab%201.png) |
+| ![mobile Screenshot](./src/assets/mob%201.png) | 
 
 
 
