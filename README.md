@@ -2,6 +2,10 @@
 
 A clean and modern booking form built with **React** and **Tailwind CSS**. This form captures user data like name, email, phone number, type of tech event, gender, and available dates. It includes custom styling, dark mode elements, and interactive inputs.
 
+## 🌐 Live Demo
+[View Live Project]([https://your-project-url.vercel.app](https://event-registration-form-eosin.vercel.app/)) 
+
+
 
 | Desktop View | Mobile View |
 |--------------|-------------|
